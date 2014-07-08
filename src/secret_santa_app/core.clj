@@ -1,6 +1,5 @@
-(ns secret-santa-app.core)
-
-(:require [ring.adapter.jetty :as jetty]))
+(ns secret-santa-app.core
+  (:require [ring.adapter.jetty :as jetty]))
 
 (defn app [req]
   {:status 200
