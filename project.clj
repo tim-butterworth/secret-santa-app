@@ -6,4 +6,7 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [javax.servlet/servlet-api "2.5"]
                  [ring/ring-core "1.3.0"]
-                 [ring/ring-jetty-adapter "1.3.0"]])
+                 [ring/ring-jetty-adapter "1.3.0"]
+                 [cheshire "5.3.1"]]
+  :plugins [[lein-ring "0.8.7"]]
+  :ring {:handler secret-santa-app.core/app})
