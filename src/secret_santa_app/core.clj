@@ -6,5 +6,9 @@
    :headers {"Content-Type" "text/plain"}
    :body "Hello, world"})
 
-(defn -main [port]
+(defn start [port]
   (jetty/run-jetty app {:port (Integer. port) :join? false}))
+(defn -main []
+  (let [port (Integer/parseInt
+              (or (System/getenv "PORT") "3000"))]
+    (start port)))
