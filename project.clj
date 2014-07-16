@@ -8,6 +8,7 @@
                  [ring/ring-core "1.3.0"]
                  [ring/ring-jetty-adapter "1.3.0"]
                  [cheshire "5.3.1"]
-                 [com.novemberain/monger "2.0.0"]]
+                 [com.novemberain/monger "2.0.0"]
+                 [org.apache.commons/commons-email "1.2"]]
   :plugins [[lein-ring "0.8.7"]]
   :ring {:handler secret-santa-app.core/app})
