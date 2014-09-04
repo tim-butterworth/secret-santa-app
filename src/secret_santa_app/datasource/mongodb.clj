@@ -7,5 +7,6 @@
 (def conn-db (mg/connect-via-uri uri))
 (def db (conn-db :db))
 (def conn (conn-db :conn))
-(defn try-insert []
-  (println (mc/insert-and-return db "user" {:name "Tim" :age 30})))
+
+(defn try-insert-admin [email]
+  (println (mc/insert-and-return db "admin" {:name "Tim"})))
