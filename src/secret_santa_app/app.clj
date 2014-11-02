@@ -1,16 +1,13 @@
 (ns secret-santa-app.app
   (:require [ring.adapter.jetty :as jetty]
+            [ring.middleware.params :as params]
             [secret-santa-app.datasource.mongodb :as db]
-            [secret-santa-app.email.email :as email]))
+            [secret-santa-app.email.email :as email]
+            [secret-santa-app.router.router :as router]
+            [secret-santa-app.utils.requestutils :as utils]))
 
-(defn simple-message [msg]
-  {:status 200
-     :headers {"Content-Type" "text/plain"}
-     :body msg})
 (defn app [req]
-  (println req)
-  (if (= :get (req :request-method))
-    (simple-message "hi there")
-    (do
-      (email/send-email)
-      (simple-message "sent an email"))))
+  ((params/wrap-params 
+    (fn [request] 
+      (router/route 
+       (utils/with-json request)))) req))
