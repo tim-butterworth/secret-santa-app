@@ -13,6 +13,12 @@
     (utils/include-view-js "register")
     "</head>"
     "<body>"
-    "<div id='content'/>"
+    "<div ng-app='christmasapp'>"
+    "<div id='main'>"
+    "<div ng-view></div>"
+    "</div>"
+    "<div ng-app='christmasapp'>"
+    "</div>"
+    "</div>"
     "</body"
     "</html>"]))

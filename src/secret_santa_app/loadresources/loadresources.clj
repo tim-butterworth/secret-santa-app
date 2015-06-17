@@ -2,8 +2,5 @@
   (:require [clojure.java.io :as io]))
 
 (defn fetch-resource [n]
-  (println n)
-  ;(let [resource (:resource n)
-  ;      type (:type n)]
+  (println (str "n: " n))
     (slurp (io/resource (str "public/" n))))
-;)

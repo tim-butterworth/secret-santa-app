@@ -5,11 +5,14 @@
 
 (defn view-path [view]
   (str "/file/javascript/view/" view ".js"))
+
 (defn include-core-js []
-  (let [js-files ["/file/javascript/jquery.js"
-                  "/file/javascript/underscore-min.js"
-                  "/file/javascript/angular.min.js"]]
+  (let [js-files ["/file/javascript/jquery-2.1.4.min.js"
+                  "/file/javascript/lodash.min.js"
+                  "/file/javascript/angular.min.js"
+                  "/file/javascript/angular-route.min.js"]]
     (map (fn [n] (js-script n)) js-files)))
+
 (defn include-view-js [view]
   (js-script (view-path view)))
 
