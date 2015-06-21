@@ -1,14 +1,13 @@
 # secret-santa-app
 
-A Clojure library designed to ... well, that part is up to you.
+# Run the app
 
-## Usage
+From /Users/timothybutterworth/clojure_projects/secret-santa-app
 
-FIXME
+`lein ring server`
 
-## License
+http://localhost:3000/secret-santa/#/register
 
-Copyright © 2014 FIXME
+# Angular app location:
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+/Users/timothybutterworth/clojure_projects/secret-santa-app/resources/public/javascript/app

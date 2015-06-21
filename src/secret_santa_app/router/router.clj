@@ -15,6 +15,11 @@
    :headers {"Content-Type" "application/javascript"}
    :body msg})
 
+(defn css-response [msg]
+  {:status 200
+   :headers {"Content-Type" "text/css"}
+   :body msg})
+
 (def mp 
   {:routes [(GET 
              "*/secretsanta/admin/:admin/:group/*resourcepath"
@@ -50,17 +55,25 @@
                                                      "</body>"
                                                      "</html>"]))))
             (GET
-             "*/file/*path"
+             "*/file/javascript/*path"
              (with-params [path]
                (js-response 
-                (resources/fetch-resource (str"/" (clojure.string/join "/" path))))))
+                (resources/fetch-resource (str"/javascript/" (clojure.string/join "/" path))))))
+
             (GET
-             "*/secret-santa/register"
+             "*/file/css/*path"
+             (with-params [path]
+               (css-response 
+                (resources/fetch-resource (str"/css/" (clojure.string/join "/" path))))))
+
+            (GET
+             "*/secret-santa"
              (with-params []
                (simple-message
                 (admin-views/register))))
+
             (POST
-             "*/secret-santa/register"
+             "*/secret-santa"
              (with-params [params]
                (simple-message (clojure.string/join params))))]
 

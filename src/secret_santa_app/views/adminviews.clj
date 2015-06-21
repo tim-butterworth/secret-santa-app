@@ -7,10 +7,8 @@
    ["<html>"
     "<head>"
     "<title>Register</title>"
-    (clojure.string/join 
-     "\n" 
-     (utils/include-core-js))
-    (utils/include-view-js "register")
+    (utils/include-core-js)
+    (utils/include-core-css)
     "</head>"
     "<body>"
     "<div ng-app='christmasapp'>"

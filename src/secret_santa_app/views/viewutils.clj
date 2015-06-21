@@ -3,15 +3,41 @@
 (defn js-script [path]
   (str "<script type='text/javascript' src='" path "'></script>"))
 
+(defn css-script [path]
+  (str "<link rel='stylesheet' type='text/css' href='" path "'/>" ))
+
 (defn view-path [view]
   (str "/file/javascript/view/" view ".js"))
 
+(defn js-path [file-name]
+  (str "/file/javascript/" file-name))
+
+(defn normal-join [lst]
+  (clojure.string/join 
+   "\n" 
+   lst))
+
+(defn resource-mp-join [scripter pather files]
+  (normal-join
+   (map (fn [n] 
+          (scripter (pather n)))
+        files)))
+
 (defn include-core-js []
-  (let [js-files ["/file/javascript/jquery-2.1.4.min.js"
-                  "/file/javascript/lodash.min.js"
-                  "/file/javascript/angular.min.js"
-                  "/file/javascript/angular-route.min.js"]]
-    (map (fn [n] (js-script n)) js-files)))
+  (let [js-files ["jquery-2.1.4.min.js"
+                  "lodash.min.js"
+                  "angular.min.js"
+                  "angular-route.min.js"
+                  "bootstrap.min.js"
+                  "/app/app.js"
+                  "/app/router.js"
+                  "/app/controllers/register.js"
+                  "/app/controllers/registered.js"]]
+    (resource-mp-join js-script js-path js-files)))
+
+(defn include-core-css []
+  (let [css-files ["/file/css/bootstrap.min.css"]]
+    (resource-mp-join css-script identity css-files)))
 
 (defn include-view-js [view]
   (js-script (view-path view)))

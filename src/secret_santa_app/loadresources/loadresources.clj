@@ -3,4 +3,7 @@
 
 (defn fetch-resource [n]
   (println (str "n: " n))
-    (slurp (io/resource (str "public/" n))))
+ (let [resource (io/resource (str "public/" n))]
+   (if (= nil resource)
+     {:error 404}
+     (slurp resource))))
