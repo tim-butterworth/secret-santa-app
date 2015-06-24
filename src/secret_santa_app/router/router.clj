@@ -10,6 +10,11 @@
    :headers {"Content-Type" "text/html"}
    :body msg})
 
+(defn error-404 []
+  {:status 404
+   :headers {"Content-type" "text/html"}
+   :body "404, invalid request"})
+
 (defn js-response [msg]
   {:status 200
    :headers {"Content-Type" "application/javascript"}
@@ -78,7 +83,7 @@
                (simple-message (clojure.string/join params))))]
 
    :Fn (fn [] "failure")
-   :default (fn [] (simple-message "default"))})
+   :default (fn [] (error-404))})
 
 (def router (router-builder/build-router mp))
 
