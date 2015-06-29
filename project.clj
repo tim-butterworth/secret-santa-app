@@ -7,7 +7,7 @@
                  [javax.servlet/servlet-api "2.5"]
                  [ring/ring-core "1.3.0"]
                  [ring/ring-jetty-adapter "1.3.0"]
-                 [cheshire "5.3.1"]
+                 [cheshire "5.5.0"]
                  [org.apache.commons/commons-email "1.2"]
                  [restful-router "0.1.0-SNAPSHOT"]
                  [com.h2database/h2 "1.3.170"]]

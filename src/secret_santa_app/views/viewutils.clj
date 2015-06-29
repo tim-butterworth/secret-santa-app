@@ -28,11 +28,12 @@
                   "lodash.min.js"
                   "angular.min.js"
                   "angular-route.min.js"
+                  "angular-resource.min.js"
                   "bootstrap.min.js"
                   "/app/app.js"
                   "/app/router.js"
                   "/app/controllers/register.js"
-                  "/app/controllers/registered.js"]]
+                  "/app/services/registrationservice.js"]]
     (resource-mp-join js-script js-path js-files)))
 
 (defn include-core-css []

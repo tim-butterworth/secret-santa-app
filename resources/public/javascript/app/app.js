@@ -1,1 +1,1 @@
-angular.module('christmasapp', ['ngRoute']);
+angular.module('christmasapp', ['ngRoute', 'ngResource']);

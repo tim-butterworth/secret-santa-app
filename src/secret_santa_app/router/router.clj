@@ -3,7 +3,8 @@
             [restful-router.router.router :as router-builder]
             [restful-router.routermp.helpers :refer :all]
             [secret-santa-app.loadresources.loadresources :as resources]
-            [secret-santa-app.views.adminviews :as admin-views]))
+            [secret-santa-app.views.adminviews :as admin-views]
+            [cheshire.core :refer :all]))
 
 (defn simple-message [msg]
   {:status 200
@@ -24,6 +25,11 @@
   {:status 200
    :headers {"Content-Type" "text/css"}
    :body msg})
+
+(defn json-response [msg]
+  {:status 200
+   :headers {"Content-Type" "application/json"}
+   :body (generate-string msg)})
 
 (def mp 
   {:routes [(GET 
@@ -51,14 +57,8 @@
             (POST
              "*/register/admin"
              (with-params [params]
-               (simple-message (clojure.string/join ""
-                                                    ["<html>"
-                                                     "<head>"
-                                                     "</head>"
-                                                     "<body>"
-                                                     (params "name")
-                                                     "</body>"
-                                                     "</html>"]))))
+               (json-response {:success true})))
+
             (GET
              "*/file/javascript/*path"
              (with-params [path]

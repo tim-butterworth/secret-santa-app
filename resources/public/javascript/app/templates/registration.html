@@ -1,18 +1,22 @@
-<div>Something from the template maybe?</div>
 <div class='row col-md-12'>
+  <div class='center-block'>
+    Something from the template maybe?
+  </div>
+</div>
+<div class='row col-md-12 bg-primary'>
   <div class='row col-md-12'>
-    <input class='col-md-12' type='text' ng-model='admin.name'></input>
+    <input class='center-block' type='text' ng-model='admin.name'></input>
   </div>
   <div class='row col-md-12'>
-    <input class='col-md-12' type='text' ng-model='admin.email'></input>
+    <input class='center-block' type='text' ng-model='admin.email'></input>
   </div>
-  <div>
-    <button ng-click="showModel()">click me for fun</button>
-  </div>
-  <div>
-    <button ng-click="navigate()">click me for navigation</button>
+  <div class='row col-md-12'>
+    <button class='center-block btn btn-default' ng-click="navigate()">click me for navigation</button>
   </div>
   <div ng-if="show">
     {{admin}}
+  </div>
+  <div ng-if="result">
+    {{result}}
   </div>
 </div>
