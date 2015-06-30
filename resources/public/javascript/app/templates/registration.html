@@ -3,6 +3,11 @@
     Something from the template maybe?
   </div>
 </div>
+<div ng-if="errors">
+  <div ng-repeat="error in errors">
+    {{error}}
+  </div>
+</div>
 <div class='row col-md-12 bg-primary'>
   <div class='row col-md-12'>
     <input class='center-block' type='text' ng-model='admin.name'></input>

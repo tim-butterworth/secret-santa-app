@@ -26,10 +26,23 @@
                (assoc (req :params) :json json)))))
 
 (defn is-json [req]
-  (. json-type equalsIgnoreCase 
-     (get-content-type req)))
+  (let [unsafe-contents (get-content-type req)
+        contents (if 
+                     (= nil unsafe-contents) 
+                   [""] 
+                   (clojure.string/split unsafe-contents #";"))]
+    (loop [lst contents]
+      (if (empty? lst)
+        false
+        (let [val (first lst)
+              remainder (rest lst)
+              found (. json-type equalsIgnoreCase val)]
+          (if found 
+            true
+            (recur remainder)))))))
 
 (defn with-json [req]
+  (println (str "is-json " (is-json req)))
   (if (is-json req)
     (json-to-params req)
     req))

@@ -26,10 +26,13 @@
    :headers {"Content-Type" "text/css"}
    :body msg})
 
-(defn json-response [msg]
-  {:status 200
+(defn json-status-response [status msg]
+  {:status status
    :headers {"Content-Type" "application/json"}
    :body (generate-string msg)})
+
+(defn json-response [msg]
+  (json-status-response 200 msg))
 
 (def mp 
   {:routes [(GET 
@@ -57,7 +60,9 @@
             (POST
              "*/register/admin"
              (with-params [params]
-               (json-response {:success true})))
+;use json from the params
+               (do (println (str "params " params)) 
+                   (json-response {:success true}))))
 
             (GET
              "*/file/javascript/*path"
