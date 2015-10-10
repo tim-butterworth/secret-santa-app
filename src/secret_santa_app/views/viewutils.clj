@@ -9,10 +9,10 @@
   (str "<link rel='stylesheet' type='text/css' href='" path "'/>" ))
 
 (defn view-path [view]
-  (str "/file/javascript/view/" view ".js"))
+  (str "file/javascript/view/" view ".js"))
 
 (defn js-path [file-name]
-  (str "/file/javascript/" file-name))
+  (str "file/javascript/" file-name))
 
 (defn normal-join [lst]
   (clojure.string/join 
@@ -41,7 +41,7 @@
     (resource-mp-join js-script js-path js-files)))
 
 (defn include-core-css []
-  (let [css-files ["/file/css/bootstrap.min.css"]]
+  (let [css-files ["file/css/bootstrap.min.css"]]
     (resource-mp-join css-script identity css-files)))
 
 (defn include-view-js [view]

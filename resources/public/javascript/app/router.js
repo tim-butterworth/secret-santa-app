@@ -1,4 +1,4 @@
-var BASE_TEMPLATE_URL = "/file/javascript/app/templates/";
+var BASE_TEMPLATE_URL = "file/javascript/app/templates/";
 
 angular.module('christmasapp').config(function($routeProvider, $resourceProvider) {
     $routeProvider
