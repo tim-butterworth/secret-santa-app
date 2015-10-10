@@ -10,6 +10,6 @@
                  [cheshire "5.5.0"]
                  [org.apache.commons/commons-email "1.2"]
                  [restful-router "0.1.0-SNAPSHOT"]
-                 [com.h2database/h2 "1.3.170"]]
+                 [com.h2database/h2 "1.4.189"]]
   :plugins [[lein-ring "0.8.7"]]
   :ring {:handler secret-santa-app.core/app})

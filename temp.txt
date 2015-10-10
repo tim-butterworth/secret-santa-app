@@ -1,0 +1,15 @@
+(ns secret-santa-app.views.app-js) 
+
+(def js-files 
+"/javascript/app/app.js"
+"/javascript/app/router.js"
+"/javascript/app/controllers/add_people.js"
+"/javascript/app/controllers/add_people.js~"
+"/javascript/app/controllers/register.js"
+"/javascript/app/services/peopleservice.js"
+"/javascript/app/services/peopleservice.js~"
+"/javascript/app/services/registrationservice.js"
+"/javascript/app/templates/add_people.html"
+"/javascript/app/templates/registered.html"
+"/javascript/app/templates/registration.html"
+)

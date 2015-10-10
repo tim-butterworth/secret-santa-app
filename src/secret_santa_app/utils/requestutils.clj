@@ -42,7 +42,6 @@
             (recur remainder)))))))
 
 (defn with-json [req]
-  (println (str "is-json " (is-json req)))
   (if (is-json req)
     (json-to-params req)
     req))

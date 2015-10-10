@@ -1,0 +1,3 @@
+angular.module('christmasapp').controller('addPeople', function($scope, $location, $routeParams) {
+    var adminId = $routeParams.adminId;
+});

@@ -35,34 +35,28 @@
   (json-status-response 200 msg))
 
 (def mp 
-  {:routes [(GET 
-             "*/secretsanta/admin/:admin/:group/*resourcepath"
-             (with-params [admin group resourcepath] 
-               (simple-message (clojure.string/join ""
-                                                    ["<html>"
-                                                     "<head>"
-                                                     "<script type='text/javascript' src='/file/javascript/ember.prod.js'></script>"
-                                                     "<script type='text/javascript' src='/file/javascript/underscore-min.js'></script>"
-                                                     "<script type='text/javascript' src='/file/javascript/angular.min.js'></script>"
-                                                     "<head>"
-                                                     "<body>"
-                                                     "<div>"
-                                                     (str "group : " group)
-                                                     "</div>"
-                                                     "<div>"
-                                                     (str "admin : " admin)
-                                                     "</div>"
-                                                     "<div>"
-                                                     (str "loading resource : " resourcepath "......")
-                                                     "</div>"
-                                                     "</body>"
-                                                     "</html>"]))))
+  {:routes [(GET
+             "*/secret-santa"
+             (with-params []
+               (simple-message
+                (admin-views/register))))
+
             (POST
              "*/register/admin"
-             (with-params [params]
-;use json from the params
-               (do (println (str "params " params)) 
-                   (json-response {:success true}))))
+             (with-params [params json]
+               (json-response {:success true :data json})))
+
+            (POST
+             "*/group/:group-id/people"
+             (with-params [params group-id]
+               (json-response {:success true 
+                               :json (:json params)})))
+
+            (GET
+             "*/group/:group-id/people"
+             (with-params [group-id]
+               (json-response
+                [{:name "p1"} {:name "p2"}])))
 
             (GET
              "*/file/javascript/*path"
@@ -75,12 +69,6 @@
              (with-params [path]
                (css-response 
                 (resources/fetch-resource (str"/css/" (clojure.string/join "/" path))))))
-
-            (GET
-             "*/secret-santa"
-             (with-params []
-               (simple-message
-                (admin-views/register))))
 
             (POST
              "*/secret-santa"

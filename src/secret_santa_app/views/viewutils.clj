@@ -1,4 +1,6 @@
-(ns secret-santa-app.views.viewutils)
+(ns secret-santa-app.views.viewutils
+  (:require [secret-santa-app.views.app-js :as app-js]
+            [secret-santa-app.views.css :as css]))
 
 (defn js-script [path]
   (str "<script type='text/javascript' src='" path "'></script>"))
@@ -33,7 +35,9 @@
                   "/app/app.js"
                   "/app/router.js"
                   "/app/controllers/register.js"
-                  "/app/services/registrationservice.js"]]
+                  "/app/services/registrationservice.js"
+                  "/app/services/peopleservice.js"
+                  "/app/controllers/add_people.js"]]
     (resource-mp-join js-script js-path js-files)))
 
 (defn include-core-css []

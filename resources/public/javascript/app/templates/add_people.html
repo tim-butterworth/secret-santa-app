@@ -1,0 +1,20 @@
+<div>
+  <div ng-repeat="person in people">
+    <div class='row col-md-12 bg-primary'>
+      <input class='center-block' type='text' ng-model='person.name'></input>
+    </div>
+    <div class='row col-md-12 bg-primary'>
+      <input class='center-block' type='text' ng-model='person.email'></input>
+    </div>
+    
+    {{person}}    
+  </div>
+
+  <div class='row col-md-12'>
+    <button class='center-block btn btn-default' ng-click="addPerson()">Add another</button>
+  </div>
+  <div class='row col-md-12'>
+    <button class='center-block btn btn-default' ng-click="submit()">Submit</button>
+  </div>
+
+</div>
