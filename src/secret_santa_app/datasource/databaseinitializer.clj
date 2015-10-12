@@ -1,17 +1,22 @@
-()
+(ns secret-santa-app.datasource.databaseinitializer
+  (:require [secret-santa-app.datasource.sqlutilities :as sql]))
 
-(import java.sql.Connection)
-(import java.sql.SQLException)
-(import java.sql.Statement)
-(import java.sql.Connection)
-(import java.sql.DriverManager)
+(def entities 
+  (atom {}))
 
-(. Class forName "org.h2.Driver")
-(def connection (. DriverManager getConnection "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" "" ""))
-(def statement (. connection createStatement))
-(. statement execute "CREATE table person (id BIGINT primary key, name VARCHAR(200))")
-(. statement execute "Insert into person (id, name) values (1, 'Swathi the Sweet biscuit')")
+(def created-entity-tables
+  (atom false))
 
-(def rs (. statement executeQuery "Select * from person"))
-(. rs next)
-(. rs getString 2)
+(defn register-entity 
+  ([entity] (register-entity entity entities))
+  ([entity entity-mp] 
+     (swap! entity-mp
+            (fn [mp]
+              (assoc 
+                  mp
+                (first (keys entity)) 
+                (first (vals entity)))))))
+
+(defn create-entity-tables [])
+
+(defn configure [datasource entities ])
