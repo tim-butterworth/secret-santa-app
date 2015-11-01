@@ -20,3 +20,5 @@
 (defn create-entity-tables [])
 
 (defn configure [datasource entities ])
+(defn save [data])
+(defn find-one [id])
